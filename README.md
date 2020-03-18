@@ -8,5 +8,5 @@ vtk_utilities.py contains the reading and plotting part and uses the package vtk
 unstructered_mesh.py contains the classes which I used as container for caclulating the mlmc solution.
 Some exemplary files are already pushed, in the next weeks the results of my Thesis and the Thesis itself will be pushed to.
 
-![Plotting Example](/output.png)
+![Plotting Example](/plot7.png)
 
