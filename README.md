@@ -5,8 +5,8 @@ The MLMC Algorithm and the Discontinuous Galerkin are implemented in the Codefra
 This Repository contains some work for better usage of vtk files in Python3, including reading to numpy, plotting meshes (scalar- and vector-valued) with matplotlib and combining meshes to an mlmc solution, which is a in mlmc way combined mean value of all solutions.
 
 vtk_utilities.py contains the reading and plotting part and uses the package vtk (https://pypi.org/project/vtk/).
-unstructered_multi_mesh.py contains the class which I used as container for caclulating the mlmc solution.
-Some exemplary files are already pushed, in the next the results of my Thesis and the Thesis itself will be pushed to.
+unstructered_mesh.py contains the classes which I used as container for caclulating the mlmc solution.
+Some exemplary files are already pushed, in the next weeks the results of my Thesis and the Thesis itself will be pushed to.
 
 ![Plotting Example](/output.png)
 
