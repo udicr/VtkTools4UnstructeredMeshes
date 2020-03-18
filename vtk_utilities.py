@@ -249,9 +249,9 @@ def get_max_fluxnorm(working_dir="../build/data/vtk/", filename="sample_4_1/flux
 def solution_quiver_plot():
     s = VtkPlot()
     s.set_wd("/home/user/Workspace/mlmcExperiment200220/0.01/vtk/")
-    s.add_pcolormesh("sample_5_1/U.0128.vtk")
-    s.add_quivers("sample_5_1/flux.vtk", quiver_filter=2)
-    plt.show()
+    s.add_pcolormesh("sample_7_1/U.0128.vtk")
+    s.add_quivers("sample_7_1/flux.vtk", quiver_filter=6,quiver_scale=0.15)
+    s.save("plot7.png")
 
 
 if __name__ == "__main__":
