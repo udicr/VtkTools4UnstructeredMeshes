@@ -121,3 +121,41 @@ def mlmc_massplot():
             plt.legend()
 
     plt.savefig("MLMCMassPlot.jpg")
+
+
+def tail(file, n=30, bs=1024):
+    f = open(file)
+    f.seek(0, 2)
+    l = 1 - f.read(1).count('\n')
+    B = f.tell()
+    while n >= l and B > 0:
+        block = min(bs, B)
+        B -= block
+        f.seek(B, 0)
+        l += f.read(block).count('\n')
+    f.seek(B, 0)
+    l = min(l, n)
+    lines = f.readlines()[-l:]
+    f.close()
+    return lines
+
+
+def parse_nofsamples(result):
+    ind = None
+    try:
+        for i in range(len(result)):
+            if "eps" in result[i] and "value" in result[i] and "-" in result[i + 1] and "-" in result[i + 3]:
+                ind = i + 2
+                break
+        if ind is None:
+            raise IndexError
+    except IndexError as e:
+        raise IndexError("File does not contain mlmcExperiment summary")
+    summary = [j for j in result[ind].strip().split(" ") if j != ''][3:]
+    n = len(summary)
+    if n % 2 == 0:
+        lvls = [int(k) for k in summary[:int(n / 2)]]
+        samples = [int(k) for k in summary[int(n/2):]]
+    else:
+        raise IndexError("number of entrees is not even")
+    return lvls, samples
