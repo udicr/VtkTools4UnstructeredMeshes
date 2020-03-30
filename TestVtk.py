@@ -99,7 +99,6 @@ class TestPlotting(TestVtk):
         s.save("Testsamples/output.png")
         self.assertEqual(os.path.isfile("Testsamples/output.png"), True)
 
-
 class TestScalarMeshes(TestVtk):
     def test_read(self):
         mesh = UnstructuredScalarMesh("Testsamples/scalar.0000.vtk")

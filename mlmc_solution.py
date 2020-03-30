@@ -33,32 +33,12 @@ class McScalarMesh(McMesh):
 
     def calculate(self):
         if self.only_fine:
-            '''
-            mesh_0 = UnstructuredScalarMesh("sample_" + str(self.lvl) + "_0/" + self.filename)
-            meshlst = [mesh_0]
-            for j in range(1, self.amount):
-                mesh_j = UnstructuredScalarMesh("sample_" + str(self.lvl) + "_" + str(
-                    j) + "/" + self.filename)
-                meshlst.append(mesh_j)
-            '''
             pool = Pool(kernels)
             namelst = [self.wd +"sample_" + str(self.lvl) + "_" + str(j) + "/" + self.filename for j in range(self.amount)]
             meshlst = pool.map(UnstructuredScalarMesh, namelst)
             self.mesh = sum(meshlst)
             self.mesh.scaling(1.0 / self.amount)
         else:
-            '''
-            fine_mesh_0 = UnstructuredScalarMesh("sample_" + str(self.lvl) + "_0/" + self.filename)
-            fine_meshlst = [fine_mesh_0]
-            coarse_mesh_0 = UnstructuredScalarMesh("sample_coarse_" + str(self.lvl) + "_0/" + self.filename)
-            coarse_meshlst = [coarse_mesh_0]
-            for j in range(1, self.amount):
-                fine_mesh_j = UnstructuredScalarMesh("sample_" + str(self.lvl) + "_" + str(j) + "/" + self.filename)
-                coarse_mesh_j = UnstructuredScalarMesh(
-                    "sample_coarse_" + str(self.lvl) + "_" + str(j) + "/" + self.filename)
-                fine_meshlst.append(fine_mesh_j)
-                coarse_meshlst.append(coarse_mesh_j)
-            '''
             pool = Pool(kernels)
             fine_namelst = [self.wd +"sample_" + str(self.lvl) + "_" + str(j) + "/" + self.filename for j in range(self.amount)]
             fine_meshlst = pool.map(UnstructuredScalarMesh, fine_namelst)
@@ -71,7 +51,6 @@ class McScalarMesh(McMesh):
             self.mesh = fine_sum_mesh - us_coarse_sum_mesh
             self.mesh.scaling(1.0 / self.amount)
 
-
 class McVectorMesh(McMesh):
     def __init__(self, level, sample_amount, working_dir, filename, only_fine=False):
         super().__init__(level, sample_amount, working_dir, only_fine)
@@ -80,14 +59,6 @@ class McVectorMesh(McMesh):
 
     def calculate(self):
         if self.only_fine:
-            '''
-            mesh_0 = UnstructuredVectorMesh(self.wd + "sample_" + str(self.lvl) + "_0/" + self.filename)
-            meshlst = [mesh_0]
-            for j in range(1, self.amount):
-                mesh_j = UnstructuredVectorMesh(self.wd + "sample_" + str(self.lvl) + "_" + str(
-                    j) + "/flux.vtk")
-                meshlst.append(mesh_j)
-            '''
             pool = Pool(kernels)
             namelst = [self.wd + "sample_" + str(self.lvl) + "_" + str(j) + "/" + self.filename for j in
                        range(self.amount)]
@@ -95,19 +66,6 @@ class McVectorMesh(McMesh):
             self.mesh = sum(meshlst)
             self.mesh.scaling(1.0 / self.amount)
         else:
-            '''
-            fine_mesh_0 = UnstructuredVectorMesh(self.wd + "sample_" + str(self.lvl) + "_0/" + self.filename)
-            fine_meshlst = [fine_mesh_0]
-            coarse_mesh_0 = UnstructuredVectorMesh(self.wd + "sample_coarse_" + str(self.lvl) + "_0/" + self.filename)
-            coarse_meshlst = [coarse_mesh_0]
-            for j in range(1, self.amount):
-                fine_mesh_j = UnstructuredVectorMesh(self.wd + "sample_" + str(self.lvl) + "_" + str(
-                    j) + "/" + self.filename)
-                coarse_mesh_j = UnstructuredVectorMesh(self.wd + "sample_coarse_" + str(self.lvl) + "_" + str(
-                    j) + "/" + self.filename)
-                fine_meshlst.append(fine_mesh_j)
-                coarse_meshlst.append(coarse_mesh_j)
-            '''
             pool = Pool(kernels)
             fine_namelst = [self.wd + "sample_" + str(self.lvl) + "_" + str(j) + "/" + self.filename for j in
                             range(self.amount)]
@@ -123,6 +81,7 @@ class McVectorMesh(McMesh):
             self.mesh.scaling(1.0 / self.amount)
 
 
+
 class McMultiScalarMesh(McMesh):
     def __init__(self, level, sample_amount, working_dir, filename, only_fine=False):
         super().__init__(level, sample_amount, working_dir, only_fine)
@@ -131,33 +90,12 @@ class McMultiScalarMesh(McMesh):
 
     def calculate(self):
         if self.only_fine:
-            '''
-            mesh_0 = UnstructuredMultiScalarMesh(self.wd + "sample_" + str(self.lvl) + "_0/U.")
-            meshlst = [mesh_0]
-            for j in range(1, self.amount):
-                mesh_j = UnstructuredMultiScalarMesh(self.wd + "sample_" + str(self.lvl) + "_" + str(
-                    j) + "/U.")
-                meshlst.append(mesh_j)
-            '''
             pool = Pool(kernels)
             namelst = [self.wd +"sample_" + str(self.lvl) + "_" + str(j) + "/U." for j in range(self.amount)]
             meshlst = pool.map(UnstructuredMultiScalarMesh, namelst)
             self.mesh = sum(meshlst)
             self.mesh.scaling(1.0 / self.amount)
         else:
-            '''
-            fine_mesh_0 = UnstructuredMultiScalarMesh(self.wd + "sample_" + str(self.lvl) + "_0/U.")
-            fine_meshlst = [fine_mesh_0]
-            coarse_mesh_0 = UnstructuredMultiScalarMesh(self.wd + "sample_coarse_" + str(self.lvl) + "_0/U.")
-            coarse_meshlst = [coarse_mesh_0]
-            for j in range(1, self.amount):
-                fine_mesh_j = UnstructuredMultiScalarMesh(self.wd + "sample_" + str(self.lvl) + "_" + str(
-                    j) + "/U.")
-                coarse_mesh_j = UnstructuredMultiScalarMesh(self.wd + "sample_coarse_" + str(self.lvl) + "_" + str(
-                    j) + "/U.")
-                fine_meshlst.append(fine_mesh_j)
-                coarse_meshlst.append(coarse_mesh_j)
-            '''
             pool = Pool(kernels)
             fine_namelst = [self.wd +"sample_" + str(self.lvl) + "_" + str(j) + "/" + self.filename for j in range(self.amount)]
             fine_meshlst = pool.map(UnstructuredMultiScalarMesh, fine_namelst)
@@ -229,3 +167,12 @@ if __name__ == "__main__":
             mlmcsol.mesh.save(mlmcsol.wd + "mlmc/" + "U.")
         except OSError as e:
             mlmcsol.mesh.save("U.")
+        mlmcflux = MlmcVectorMesh(working_dir="../../mlmcExperiment200220/" + str(eps[i]) + "/vtk/",
+                                  levels=[4, 5, 6, 7],
+                                  sample_amount=inits[i], filename="flux.vtk")
+
+        try:
+            mlmcflux.mesh.save(mlmcflux.wd + "mlmc/" + "flux.vtk")
+        except OSError as e:
+            mlmcflux.mesh.save("flux.vtk")
+
