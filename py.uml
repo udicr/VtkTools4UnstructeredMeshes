@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>Python</ID>
+  <OriginalElement>#/home/user/Workspace/mlmc/notebooks/mlmc_solution.py</OriginalElement>
+  <nodes>
+    <node x="150.0" y="677.0">TestVtk.TestVectorMeshes</node>
+    <node x="180.0" y="306.0">unstructured_mesh.UnstructuredMultiScalarMesh</node>
+    <node x="1299.0" y="480.0">mlmc_solution.McVectorMesh</node>
+    <node x="252.99999999999997" y="152.0">vtk_utilities.VtkVectorReader</node>
+    <node x="1067.0" y="480.0">mlmc_solution.McScalarMesh</node>
+    <node x="952.0" y="677.0">TestVtk.TestMultiScalarMeshes</node>
+    <node x="126.5" y="76.0">vtk_utilities.VtkSingleReader</node>
+    <node x="776.0" y="677.0">TestVtk.TestReader</node>
+    <node x="586.0" y="677.0">TestVtk.TestPlotting</node>
+    <node x="566.0" y="230.0">unstructured_mesh.UnstructuredMesh</node>
+    <node x="266.0" y="473.0">mlmc_solution.MlmcMultiScalarMesh</node>
+    <node x="1088.0" y="404.0">mlmc_solution.McMesh</node>
+    <node x="304.5" y="397.0">mlmc_solution.MlmcMesh</node>
+    <node x="379.5" y="76.0">vtk_utilities.VtkGroupScalarReader</node>
+    <node x="282.75" y="0.0">vtk_utilities.VtkReader</node>
+    <node x="875.0" y="306.0">unstructured_mesh.UnstructuredVectorMesh</node>
+    <node x="545.0" y="306.0">unstructured_mesh.UnstructuredScalarMesh</node>
+    <node x="368.0" y="677.0">TestVtk.TestScalarMeshes</node>
+    <node x="843.5253752680486" y="74.31879914224447">vtk_utilities.VtkMPlot</node>
+    <node x="603.5" y="601.0">TestVtk.TestVtk</node>
+    <node x="547.0" y="473.0">mlmc_solution.MlmcVectorMesh</node>
+    <node x="800.0" y="480.0">mlmc_solution.McMultiScalarMesh</node>
+    <node x="0.0" y="152.0">vtk_utilities.VtkScalarReader</node>
+    <node x="20.0" y="473.0">mlmc_solution.MlmcScalarMesh</node>
+    <node x="847.0253752680486" y="-1.6812008577555275">vtk_utilities.VtkPlot</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="TestVtk.TestReader" target="TestVtk.TestVtk">
+      <point x="0.0" y="-13.0" />
+      <point x="854.0" y="657.0" />
+      <point x="698.0" y="657.0" />
+      <point x="27.0" y="13.0" />
+    </edge>
+    <edge source="unstructured_mesh.UnstructuredScalarMesh" target="unstructured_mesh.UnstructuredMesh">
+      <point x="0.0" y="-13.0" />
+      <point x="0.0" y="13.0" />
+    </edge>
+    <edge source="mlmc_solution.McScalarMesh" target="mlmc_solution.McMesh">
+      <point x="0.0" y="-13.0" />
+      <point x="0.0" y="13.0" />
+    </edge>
+    <edge source="unstructured_mesh.UnstructuredVectorMesh" target="unstructured_mesh.UnstructuredMesh">
+      <point x="0.0" y="-13.0" />
+      <point x="1030.0" y="281.0" />
+      <point x="789.3333333333333" y="281.0" />
+      <point x="89.33333333333326" y="13.0" />
+    </edge>
+    <edge source="mlmc_solution.McVectorMesh" target="mlmc_solution.McMesh">
+      <point x="0.0" y="-13.0" />
+      <point x="1405.0" y="455.0" />
+      <point x="1229.6666666666665" y="455.0" />
+      <point x="56.66666666666663" y="13.0" />
+    </edge>
+    <edge source="TestVtk.TestPlotting" target="TestVtk.TestVtk">
+      <point x="0.0" y="-13.0" />
+      <point x="0.0" y="13.0" />
+    </edge>
+    <edge source="mlmc_solution.MlmcScalarMesh" target="mlmc_solution.MlmcMesh">
+      <point x="0.0" y="-13.0" />
+      <point x="133.0" y="448.0" />
+      <point x="335.1666666666667" y="448.0" />
+      <point x="-61.333333333333314" y="13.0" />
+    </edge>
+    <edge source="mlmc_solution.MlmcVectorMesh" target="mlmc_solution.MlmcMesh">
+      <point x="0.0" y="-13.0" />
+      <point x="660.0" y="448.0" />
+      <point x="457.83333333333337" y="448.0" />
+      <point x="61.33333333333337" y="13.0" />
+    </edge>
+    <edge source="vtk_utilities.VtkSingleReader" target="vtk_utilities.VtkReader">
+      <point x="0.0" y="-13.0" />
+      <point x="243.0" y="51.0" />
+      <point x="330.5" y="51.0" />
+      <point x="-47.75" y="13.0" />
+    </edge>
+    <edge source="vtk_utilities.VtkMPlot" target="vtk_utilities.VtkPlot">
+      <point x="0.0" y="-13.0" />
+      <point x="0.0" y="13.0" />
+    </edge>
+    <edge source="TestVtk.TestVectorMeshes" target="TestVtk.TestVtk">
+      <point x="0.0" y="-13.0" />
+      <point x="249.0" y="647.0" />
+      <point x="617.0" y="647.0" />
+      <point x="-54.0" y="13.0" />
+    </edge>
+    <edge source="vtk_utilities.VtkScalarReader" target="vtk_utilities.VtkSingleReader">
+      <point x="0.0" y="-13.0" />
+      <point x="116.5" y="127.0" />
+      <point x="184.75" y="127.0" />
+      <point x="-58.25" y="13.0" />
+    </edge>
+    <edge source="vtk_utilities.VtkGroupScalarReader" target="vtk_utilities.VtkReader">
+      <point x="0.0" y="-13.0" />
+      <point x="513.5" y="51.0" />
+      <point x="426.0" y="51.0" />
+      <point x="47.75" y="13.0" />
+    </edge>
+    <edge source="TestVtk.TestScalarMeshes" target="TestVtk.TestVtk">
+      <point x="0.0" y="-13.0" />
+      <point x="467.0" y="657.0" />
+      <point x="644.0" y="657.0" />
+      <point x="-27.0" y="13.0" />
+    </edge>
+    <edge source="vtk_utilities.VtkVectorReader" target="vtk_utilities.VtkSingleReader">
+      <point x="0.0" y="-13.0" />
+      <point x="369.5" y="127.0" />
+      <point x="301.25" y="127.0" />
+      <point x="58.25" y="13.0" />
+    </edge>
+    <edge source="mlmc_solution.McMultiScalarMesh" target="mlmc_solution.McMesh">
+      <point x="0.0" y="-13.0" />
+      <point x="923.5" y="455.0" />
+      <point x="1116.3333333333333" y="455.0" />
+      <point x="-56.666666666666686" y="13.0" />
+    </edge>
+    <edge source="unstructured_mesh.UnstructuredMultiScalarMesh" target="unstructured_mesh.UnstructuredMesh">
+      <point x="0.0" y="-13.0" />
+      <point x="352.5" y="281.0" />
+      <point x="610.6666666666667" y="281.0" />
+      <point x="-89.33333333333331" y="13.0" />
+    </edge>
+    <edge source="mlmc_solution.MlmcMultiScalarMesh" target="mlmc_solution.MlmcMesh">
+      <point x="0.0" y="-13.0" />
+      <point x="0.0" y="13.0" />
+    </edge>
+    <edge source="TestVtk.TestMultiScalarMeshes" target="TestVtk.TestVtk">
+      <point x="0.0" y="-13.0" />
+      <point x="1068.5" y="647.0" />
+      <point x="725.0" y="647.0" />
+      <point x="54.0" y="13.0" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic Group" zoom="1.0" x="679.5" y="512.0" />
+  <SelectedNodes />
+  <Categories />
+</Diagram>
+

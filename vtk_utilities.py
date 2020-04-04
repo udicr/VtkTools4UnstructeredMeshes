@@ -308,47 +308,43 @@ def get_max_fluxnorm(working_dir="../build/data/vtk/", filename="sample_4_1/flux
 
 def solution_quiver_plot(sol="sample_7_1/U.0128.vtk", flux="sample_7_1/flux.vtk"):
     s = VtkPlot()
-    s.set_wd("/home/user/Workspace/mlmcExperiment200220/0.01/vtk/")
+    s.set_wd("../results/MLMCExperiment/0.001/vtk/")
     s.add_pcolormesh(sol)
     s.add_quivers(flux, quiver_filter=6, quiver_scale=0.15)
 
 
 def solution_contour(sol="sample_7_1/U.0000.vtk"):
     s = VtkPlot()
-    s.set_wd("/home/user/Workspace/mlmcExperiment200220/0.01/vtk/")
+    s.set_wd("../results/MLMCExperiment/0.001/vtk/")
     s.add_contourf(sol)
-    # s.save("plots/anfangsbedingung.png")
 
 
 def smooth_solution():
     s = VtkPlot()
-    s.set_wd("/home/user/Workspace/mlmcExperiment200220/0.01/vtk/")
+    s.set_wd("../results/MLMCExperiment/0.001/vtk/")
     s.add_imshow("sample_7_1/U.0000.vtk", interpolation='gaussian')
-    # s.save("plots/anfangsbedingung.png")
+
 
 
 def solution_borders(sol="sample_4_0/U.0000.vtk"):
     my_dpi = 600.0
     s = VtkPlot(figsize=(4, 4), dpi=my_dpi)
-    s.set_wd("/home/user/Workspace/mlmcExperiment200220/0.01/vtk/")
+    s.set_wd("../results/MLMCExperiment/0.001/vtk/")
     my_lw = 4 * my_dpi / (1024 * 32)
     s.add_pcolormesh(sol, cb=False, edgecolor='k', linewidth=my_lw)
-    # plt.savefig("plots/mesh" + lvl + ".png", dpi=my_dpi)
 
 
 def permeability_smoothplot(perm="sample_7_0/permeability.vtk"):
     s = VtkPlot()
-    s.set_wd("/home/user/Workspace/mlmcExperiment200220/0.01/vtk/")
+    s.set_wd("../results/MLMCExperiment/0.001/vtk/")
     s.add_imshow(perm, interpolation='gaussian')
-    # s.save("plots/perm.png")
 
 
 def permeability_quiverplot(perm="sample_7_0/permeability.vtk", flux="sample_7_0/flux.vtk"):
     s = VtkPlot()
-    s.set_wd("/home/user/Workspace/mlmcExperiment200220/0.01/vtk/")
+    s.set_wd("../results/MLMCExperiment/0.01/vtk/")
     s.add_imshow(perm, cb=False, interpolation='gaussian')
     s.add_quivers(flux, quiver_filter=6, quiver_scale=0.14)
-    # s.save("plots/permquiv.png")
 
 
 def solution_3(wd = "/home/user/Workspace/mlmcExperiment200220/0.01/vtk/",sample="sample_7_1/",quiver_filter=6,quiver_scale=0.10):
@@ -360,8 +356,6 @@ def solution_3(wd = "/home/user/Workspace/mlmcExperiment200220/0.01/vtk/",sample
     plt.axis('off')
     gs = gridspec.GridSpec(1, 3, width_ratios=[1, 1, 1.25])
     s.set_wd(wd)
-    solution = VtkScalarReader(sample + "U.%04d.vtk" % 0, s.wd)
-    coords, cells, values = solution.to_numpy()
     s.ax1 = s.fig.add_subplot(gs[0])
     s.add_imshow(sample + "U.%04d.vtk" % 0, cb=False, ax=s.ax1)
     s.ax1.set_title('t = 0')
@@ -374,24 +368,41 @@ def solution_3(wd = "/home/user/Workspace/mlmcExperiment200220/0.01/vtk/",sample
     s.ax3.set_title('t = 1.0')
 
 def save_plots():
-    solution_3(wd="../results/mlmcExperiment/0.001/vtk/", sample="sample_4_1/", quiver_filter=1, quiver_scale=0.10)
+    solution_3(wd="../results/MLMCExperiment/0.001/vtk/", sample="sample_4_1/", quiver_filter=1, quiver_scale=0.10)
     plt.savefig("plots/sample_4_1.png")
-    solution_3(wd="../results/mlmcExperiment/0.001/vtk/", sample="sample_coarse_5_1/", quiver_filter=1,
+    solution_3(wd="../results/MLMCExperiment/0.001/vtk/", sample="sample_coarse_5_1/", quiver_filter=1,
                quiver_scale=0.10)
     plt.savefig("plots/sample_coarse_5_1.png")
-    solution_3(wd="../results/mlmcExperiment/0.001/vtk/", sample="sample_5_1/", quiver_filter=2, quiver_scale=0.10)
+    solution_3(wd="../results/MLMCExperiment/0.001/vtk/", sample="sample_5_1/", quiver_filter=2, quiver_scale=0.10)
     plt.savefig("plots/sample_5_1.png")
-    solution_3(wd="../results/mlmcExperiment/0.001/vtk/", sample="sample_coarse_6_0/", quiver_filter=2,
+    solution_3(wd="../results/MLMCExperiment/0.001/vtk/", sample="sample_coarse_6_0/", quiver_filter=2,
                quiver_scale=0.12)
     plt.savefig("plots/sample_coarse_6_0.png")
-    solution_3(wd="../results/mlmcExperiment/0.001/vtk/", sample="sample_6_0/", quiver_filter=4, quiver_scale=0.12)
+    solution_3(wd="../results/MLMCExperiment/0.001/vtk/", sample="sample_6_0/", quiver_filter=4, quiver_scale=0.12)
     plt.savefig("plots/sample_6_0.png")
-    solution_3(wd="../results/mlmcExperiment/0.001/vtk/", sample="sample_coarse_7_0/", quiver_filter=4,
+    solution_3(wd="../results/MLMCExperiment/0.001/vtk/", sample="sample_coarse_7_0/", quiver_filter=4,
                quiver_scale=0.12)
     plt.savefig("plots/sample_coarse_7_0.png")
-    solution_3(wd="../results/mlmcExperiment/0.001/vtk/", sample="sample_7_0/", quiver_filter=8, quiver_scale=0.12)
+    solution_3(wd="../results/MLMCExperiment/0.001/vtk/", sample="sample_7_0/", quiver_filter=8, quiver_scale=0.12)
     plt.savefig("plots/sample_7_0.png")
+    permeability_quiverplot()
+    plt.savefig("plots/permeability_quiver.png")
+    permeability_smoothplot()
+    plt.savefig("plots/permeability.png")
+    for lvl in ["4","5","6","7"]:
+        solution_borders(sol="sample_"+lvl+"_0/U.0000.vtk")
+        plt.savefig("plots/mesh"+lvl+".png")
+    smooth_solution()
+    plt.savefig("plots/anfangsbedingung.png")
+    solution_contour()
+    plt.savefig("solutioncontour.png")
+    solution_quiver_plot()
+    plt.savefig("solutionquiver.png")
+
 
 if __name__ == "__main__":
-    save_plots()
+    s = VtkPlot()
+    s.set_wd("/home/user/Schreibtisch/")
+    s.add_imshow("ord/U.0000.vtk", interpolation='gaussian')
+    plt.savefig("anfangsbedingung.png")
 

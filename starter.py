@@ -111,6 +111,6 @@ def mlmcmeshes(working_dir, levels, sample_amount):
 
 if __name__ == "__main__":
     for eps in [0.01,0.005,0.003,0.001,0.0005]:
-        mlmcExperiment1(eps,"4,5,6","8,4,2")
+        mlmcExperiment1(eps,"4,5,6,7","16,8,4,2")
 
         

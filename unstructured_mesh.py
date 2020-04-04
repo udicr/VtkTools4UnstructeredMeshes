@@ -280,4 +280,3 @@ class UnstructuredVectorMesh(UnstructuredMesh):
         s.add_quivers(vtkfile)
         s.save(pngfile)
 
-
