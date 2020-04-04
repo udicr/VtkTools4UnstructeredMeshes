@@ -10,3 +10,7 @@ Some exemplary files are already pushed, in the next weeks the results of my The
 
 ![Plotting Example](/plot7.png)
 
+UML-Diagramm of the project:
+
+![UML Diagramm](/klassenuml3.png)
+
