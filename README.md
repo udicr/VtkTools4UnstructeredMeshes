@@ -7,7 +7,7 @@ This Repository contains some work for better usage of vtk files in Python3, inc
 vtk_utilities.py contains the reading and plotting part and uses the package vtk (https://pypi.org/project/vtk/).
 unstructered_mesh.py contains the classes which I used as container for caclulating the mlmc solution.
 
-Plotting Example - vectorfield an concentration :
+Plotting Example - vectorfield and concentration :
 ![Plotting Example](/plot7.png)
 
 Another more complex Example - multiple timestamps and two levels in comparism :
