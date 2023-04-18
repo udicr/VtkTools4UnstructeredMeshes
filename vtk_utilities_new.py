@@ -3,9 +3,11 @@ import os
 import matplotlib.pyplot as plt
 from matplotlib.collections import PatchCollection
 from matplotlib.patches import Polygon
+from matplotlib import gridspec
 import numpy as np
 
 try:
+    import vtk
     from vtk import vtkXMLGenericDataObjectReader
     from vtk.util.numpy_support import vtk_to_numpy
 except ModuleNotFoundError:
@@ -116,7 +118,7 @@ Reading methods
 class VtkReader:
     def __init__(self, cwd):
         self.wd = cwd
-        self.reader = vtkXMLGenericDataObjectReader()
+        self.reader = vtk.vtkGenericDataObjectReader() #vtkXMLGenericDataObjectReader()
         self.coordinates = None
         self.cells = None
         self.values = None
@@ -483,3 +485,30 @@ class VtkPlot:
     @staticmethod
     def save(filename):
         plt.savefig(filename, dpi=400)
+
+
+if __name__ == '__main__':
+    s = VtkPlot()
+    wd = ""
+    sample = "sample_4_0/"
+
+    vtk_dir = wd + sample
+    nsol = len([name for name in os.listdir(vtk_dir) if os.path.isfile(os.path.join(vtk_dir, name)) if
+         "U." in name])
+    my_dpi = 100.0
+    s = VtkPlot(figsize=(8, 6), dpi=my_dpi)
+    plt.axis('off')
+    gs = gridspec.GridSpec(1, 3, width_ratios=[1, 1, 1.25])
+    s.set_wd(wd)
+    s.ax1 = s.fig.add_subplot(gs[0])
+    s.add_imshow(sample + "U.%04d.vtk" % 0, cb=False, ax=s.ax1)
+    s.ax1.set_title('t = 0')
+    s.ax2 = s.fig.add_subplot(gs[1])
+    s.add_imshow(sample + "U.%04d.vtk" % int((nsol-1)/2), cb=False, ax=s.ax2)
+    s.add_quivers(sample + "flux.vtk",quiver_filter=2, quiver_scale=0.15, ax=s.ax2)
+    s.ax2.set_title('t = 0.5')
+    s.ax3 = s.fig.add_subplot(gs[2])
+    s.add_imshow(sample + "U.%04d.vtk" % int(nsol-1), cb=True, ax=s.ax3)
+    s.ax3.set_title('t = 1.0')
+
+    plt.show()

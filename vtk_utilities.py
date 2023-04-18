@@ -255,7 +255,7 @@ class VtkPlot:
         cell_coords = get_cell_coords(cells, coords)
         x = sorted(set([coord[0] for coord in coords]))
         y = sorted(set([coord[1] for coord in coords]))
-        n = len(x) - 1
+        n = len(x) 
         v1 = np.zeros((n, n))
         v2 = np.zeros((n, n))
         for i in range(len(cell_coords)):
@@ -411,8 +411,11 @@ def save_plots():
 
 
 if __name__ == "__main__":
-    s = VtkPlot()
-    s.set_wd("/home/user/Workspace/VtkTools4UnstructuredMeshes")
-    s.add_imshow("sample_4_0/U.0000.vtk", interpolation='gaussian')
-    plt.savefig("anfangsbedingung.png")
+    #s = VtkPlot()
+    #s.set_wd("/local/buchholz/VtkTools4UnstructeredMeshes")
+    #s.add_imshow("sample_4_0/U.0000.vtk", interpolation='gaussian')
+    #plt.savefig("anfangsbedingung.png")
+
+    solution_3(wd="",sample="sample_4_0/",quiver_filter=1,quiver_scale=0.10)
+    plt.show()
 
