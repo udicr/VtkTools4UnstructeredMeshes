@@ -2,7 +2,7 @@ import unittest
 import numpy as np
 import os
 import shutil
-from vtk_utilities import *
+from vtk_utilities_new import *
 from unstructured_mesh import *
 
 minimal_scalar = "# vtk DataFile Version 2.0\nUnstructured Grid by M++\nASCII\nDATASET UNSTRUCTURED_GRID\nPOINTS 4 float\n0.000000   0.000000 0\n1.000000   0.000000 0\n1.000000   1.000000 0\n0.000000   1.000000 0\nCELLS 1 5\n4 0 1 2 3\nCELL_TYPES 1\n8\nCELL_DATA 1\nSCALARS scalar_value float 1\nLOOKUP_TABLE default\n1.0"

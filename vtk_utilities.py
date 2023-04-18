@@ -1,10 +1,20 @@
-from vtk import *
-from vtk.util.numpy_support import vtk_to_numpy
+import vtk
 import os
 import numpy as np
 import matplotlib.pyplot as plt
 from matplotlib import gridspec
 import matplotlib.animation as animation
+try:
+    from vtk import vtkXMLGenericDataObjectReader
+    from vtk.util.numpy_support import vtk_to_numpy
+except ModuleNotFoundError:
+    def vtkXMLGenericDataObjectReader():
+        print("vtk module was not found")
+
+    def vtk_to_numpy():
+        print("vtk module was not found")
+
+
 
 
 def check_same_grid(coords1, cells1, coords2, cells2):
@@ -402,7 +412,7 @@ def save_plots():
 
 if __name__ == "__main__":
     s = VtkPlot()
-    s.set_wd("/home/user/Schreibtisch/")
-    s.add_imshow("ord/U.0000.vtk", interpolation='gaussian')
+    s.set_wd("/home/user/Workspace/VtkTools4UnstructuredMeshes")
+    s.add_imshow("sample_4_0/U.0000.vtk", interpolation='gaussian')
     plt.savefig("anfangsbedingung.png")
 
